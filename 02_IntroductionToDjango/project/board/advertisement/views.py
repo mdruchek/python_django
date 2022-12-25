@@ -10,6 +10,10 @@ def python(request, *args, **kwargs):
     return render(request, 'advertisement/python.html', {})
 
 
+def java(request, *args, **kwargs):
+    return render(request, 'advertisement/java.html', {})
+
+
 def web_layout(request, *args, **kwargs):
     return render(request, 'advertisement/web_layout.html', {})
 
