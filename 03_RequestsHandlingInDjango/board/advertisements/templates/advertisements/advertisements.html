@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p>
+        Счётчик GET-запросов: {{count_GET}}
+    </p>
+
+    <p>
+        Счётчик POST-запросов: {{count_POST}}
+    </p>
+    <ul>
+        {% for advertisement in advertisements %}
+            <li>{{advertisement}}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
