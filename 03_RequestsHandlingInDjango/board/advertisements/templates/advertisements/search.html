@@ -1,0 +1,26 @@
+<html>
+<title>{{title}}</title>
+<div>
+    Категория:
+    <select>
+        {% for option in category %}
+        <option>{{option}}</option>
+        {% endfor %}
+    </select>
+</div>
+<div>
+    Регион:
+    <select>
+        {% for region in regions %}
+        <option>{{region}}</option>
+        {% endfor %}
+    </select>
+</div>
+<div>
+    Поиск по объявлениям:
+    <textarea cols="20" rows="1"></textarea>
+</div>
+<div>
+    <button>Найти</button>
+</div>
+</html>
