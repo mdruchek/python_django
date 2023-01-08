@@ -13,6 +13,11 @@ class NewsListView(ListView):
     ordering = ['-date_creation']
     queryset = News.objects.filter(activity=True)
 
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['inactive_news'] = News.objects.filter(activity=False).order_by('-date_creation')
+        return context
+
 
 class NewsDetailView(DetailView):
     model = News
