@@ -6,7 +6,7 @@ class Advertisements(models.Model):
     descriptions = models.TextField(verbose_name='Описание', max_length=1000)
     price = models.FloatField(verbose_name='Цена', default=0)
     publication_start_date = models.DateTimeField(auto_now_add=True)
-    publication_end_date = models.DateTimeField(blank=True, editable=True, default=None)
+    publication_end_date = models.DateTimeField(blank=True, editable=True, null=True, default=None)
     author = models.ForeignKey('AdvertisementAuthor', verbose_name='Автор', on_delete=models.CASCADE)
     category = models.ForeignKey('AdvertisementCategory', verbose_name='Категория', on_delete=models.CASCADE)
     type = models.ForeignKey('AdvertisementType', default=1, on_delete=models.CASCADE)

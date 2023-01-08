@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Новости</title>
+</head>
+<body>
+    <h1>Новости</h1>
+    <ul>
+    {% for new in object_list %}
+        <li><a href="/news/{{ new.id }}/">{{ new.title }}</a> / Дата публикации: {{new.date_creation}}</li>
+    {% empty %}
+        <li>Новостей пока нет</li>
+    {% endfor %}
+    </ul>
+    <a href="/news/create/"><button>Добавить новость</button></a>
+</body>
+</html>
