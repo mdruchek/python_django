@@ -1,0 +1,18 @@
+{% extends 'shopapp/base.html' %}
+
+{% block title %}
+Список товаров
+{% endblock %}
+
+{% block body%}
+  <h1>Список товаров</h1>
+  {% if products %}
+  <ul>
+    {% for product in products %}
+    <li>Товар: {{ product.name }} / Стоимость: {{ product.price }} руб. / Скидка: {% firstof product.discount 'Скидки нет' %}</li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <h3>Товаров пока нет</h3>
+  {% endif %}
+{% endblock %}

@@ -1,12 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<div>
-    {% lorem %}
-</div>
-</body>
-</html>
+{% extends 'shopapp/base.html' %}
+
+{% block title %}
+Магазин
+{% endblock %}
+
+{% block body %}
+<h1>Магазин</h1>
+<h3>Список страниц</h3>
+<ul>
+  <li><a href="./orders/">Заказы</a></li>
+  <li><a href="./products/">Продукты</a></li>
+</ul>
+{% endblock %}
