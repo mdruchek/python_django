@@ -57,6 +57,7 @@ class OrderAdmin(admin.ModelAdmin):
         ProductInline,
     ]
     list_display = 'pk', 'delivery_address', 'promocode', 'user_verbose'
+    list_display_links = 'pk',
     ordering = '-pk',
     search_fields = 'user', 'delivery_address'
 
