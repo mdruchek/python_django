@@ -9,11 +9,17 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     arhived = models.BooleanField(default=False)
 
+    def __str__(self) -> str:
+        return self.name
+
 
 class User(models.Model):
     firstname = models.CharField(max_length=20)
     lastname = models.CharField(max_length=20, blank=True)
     age = models.IntegerField(blank=True, null=True)
+
+    def __str__(self) -> str:
+        return '{lastname} {firstname}'.format(lastname=self.lastname, firstname=self.firstname)
 
 
 class Order(models.Model):
@@ -21,7 +27,7 @@ class Order(models.Model):
     promocode = models.CharField(max_length=20, null=False, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     products = models.ManyToManyField(Product, related_name='orders')
-    users = models.ForeignKey(User, on_delete=models.PROTECT)
+    user = models.ForeignKey(User, on_delete=models.PROTECT)
 
-
-
+    def __str__(self) -> str:
+        return 'Заказ {order_id}'.format(order_id=self.id)

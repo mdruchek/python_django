@@ -1,0 +1,27 @@
+{% extend 'shopapp/base.html' %}
+
+{% block title %}
+Список заказов
+{% endplock %}
+
+{% block body%}
+<h1>Список заказов</h1>
+{% if orders %}
+<ul>
+  {% for order in orders %}
+  <li>
+    Заказ №: {{ order.id }} / Покупатель: {% firstof order.user.firstname order.user.lastname %}
+    <div>
+      <ul>
+        {% for product in order.products.all %}
+        <li>{{ product.name }} за {{ product.price }} руб.</li>
+        {% endfor}
+      </ul>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<h3>Заказов ещё нет</h3>
+{% endif %}
+{% endblok %}
