@@ -1,0 +1,9 @@
+{% extends 'requestdataapp/base.html' %}
+
+{% block title %}
+  Пареметры запроса  
+{% endblock title %}
+
+{% block body %}
+  <h1>Привет {{ request.GET.name }} запрос</h1>
+{% endblock body %}

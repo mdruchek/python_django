@@ -1,0 +1,38 @@
+{% extends 'requestdataapp/base.html' %}
+
+{% block title %}
+User BIO
+{% endblock title %}
+
+{% block body %}
+<h1>Форма пользователя</h1>
+<div>
+  <form method="post">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit">Загрузить</button>
+  </form>
+</div>
+{% if request.POST %}
+  <div>
+    <h2>Данные из формы</h2>
+    <table>
+      <tr>
+        <td>Полное имя:</td>
+        <td>{{ request.POST.name }}</td>
+      </tr>
+      <tr>
+        <td>Возраст:</td>
+        <td>{{ request.POST.age }}</td>
+      </tr>
+      <tr>
+        <td>Биография:</td>
+        <td><p>{{ request.POST.bio|linebreaks }}</p></td>
+      </tr>
+    </table>
+  </div>
+{% endif %}
+
+{% endblock body %}
