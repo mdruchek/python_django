@@ -1,0 +1,40 @@
+{% extends 'shopapp/base.html' %}
+
+{% block title %}
+  Список заказов
+{% endblock %}
+
+{% block body %}
+  <h1>Заказы:</h1>
+  {% if orders %}
+    <div>
+      {% for order in orders %}
+        <div>
+          <h2>Заказ №{{ order.pk }}</h2>
+          <a href="{% url 'shopapp:order_details' pk=order.pk %}">Детали заказа</a>
+          <p>Покупатель: {% firstof order.user.first_name order.user.username %}</p>
+          <p>Промокод: <code>{{ order.promocode }}</code></p>
+          <p>Адрес доставки: {{ order.delivery_address }}</p>
+          <div>
+            Товары в заказе:
+            <ul>
+              {% for product in order.products.all %}
+                <li>{{ product.name }} за {{ product.price }}руб.</li>
+              {% endfor %}
+
+            </ul>
+          </div>
+
+        </div>
+      {% endfor %}
+
+    </div>
+  {% else %}
+    <h3>Заказов пока нет</h3>
+  {% endif %}
+  
+  <div>
+    <a href="{% url 'shopapp:order_create' %}">Создать заказ</a>
+  </div>
+
+{% endblock %}

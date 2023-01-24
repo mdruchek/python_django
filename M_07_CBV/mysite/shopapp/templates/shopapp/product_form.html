@@ -1,0 +1,24 @@
+{% extends 'shopapp/base.html'%}
+
+{% block title %}
+  Создание товара
+{% endblock %}
+
+{% block body %}
+  <h1>Создание товара:</h1>
+
+  <div>
+    <form method="post">
+      {% csrf_token %}
+
+      {{ form.as_p }}
+
+      <button type="submit">Создать</button>
+    </form>
+
+    <p>
+      <a href="{% url 'shopapp:products_list' %}">К списку товаров</a>
+    </p>
+
+  </div>
+{% endblock %}

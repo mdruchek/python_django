@@ -1,0 +1,22 @@
+{% extends 'shopapp/base.html' %}
+
+{% block title %}
+  Архивирование товара
+{% endblock %}
+
+{% block body %}
+  <h1>Вы действительно хотите товар "{{ object.name }}" отправить в архив?</h1>
+  <br>
+  <div>
+    <a href="{% url 'shopapp:product_details' pk=object.pk %}"
+    >Вернуться к описанию товара "{{ object.name }}"</a>
+  </div>
+  <br>
+  <div>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Архивировать</button>
+    </form>
+  </div>
+{% endblock %}
