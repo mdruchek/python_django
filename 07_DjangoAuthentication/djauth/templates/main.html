@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Главная страница
+{% endblock %}
+
+{% block body %}
+  <h1>Главная страница</h1>
+  <h2><a href="{% url 'app_news:list' %}">Новости</a></h2>
+{% endblock %}

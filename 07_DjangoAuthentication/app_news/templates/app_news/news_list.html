@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Новости
+{% endblock %}
+
+{% block body %}
+  <a href="{% url 'main_page' %}">На главную</a>
+  <h1>Новости:</h1>
+  <ul>
+    {% for new in news %}
+      <li>
+        <a href="{% url 'app_news:details' pk=new.pk %}">{{ new.title }}</a> /
+        опубликовано: {{ new.date_creation }} /
+        автор: {{ new.author }}
+      </li>
+    {% empty %}
+      <h2>Новостей пока нет</h2>
+    {% endfor %}
+  </ul>
+
+   <a href="{% url 'app_news:create' %}">Опубликовать новость</a>
+  
+
+{% endblock %}
