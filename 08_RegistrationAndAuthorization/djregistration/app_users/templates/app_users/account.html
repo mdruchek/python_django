@@ -1,0 +1,23 @@
+{% extends 'app_news/base.html' %}
+
+{% block title %}
+  Профиль пользователя
+{% endblock %}
+
+{% block body %}
+  <h1>Профиль пользователя {{ request.user.username }}</h1>
+  <p>Username: {{ request.user.username }}</p>
+  <p>Имя: {{ request.user.first_name }}</p>
+  <p>Фамилия: {{ request.user.last_name }}</p>
+  <p>Электронная почта: {{ request.user.email }}</p>
+  <p>Тел: {{ request.user.profile.telephone }}</p>
+  <p>Город: {{ request.user.profile.city }}</p>
+  <p>Верефицирован: {{ request.user.profile.verified }}</p>
+  <p>Количество опубликованных новостей: {{ request.user.profile.number_news }}</p>
+  <p>Разрешения пользователя: {{ user.permissions }}</p>
+  <br>
+  
+  {% if user.is_superuser or perms.auth.can_verify_users %}
+    <a href="{% url 'app_users:users_list' %}">Список пользователей</a>
+  {% endif %}
+{% endblock %}

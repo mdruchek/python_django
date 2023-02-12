@@ -1,0 +1,57 @@
+{% extends 'app_news/base.html' %}
+
+{% block title %}
+  Новости
+{% endblock %}
+
+{% block body %}
+  <a href="{% url 'main' %}">На главную</a>
+  <h1>Новости:</h1>
+  <ul>
+    {% for new in news %}
+      <li>
+        <a href="{% url 'app_news:details' pk=new.pk %}">{{ new.title }}</a> /
+        опубликовано: {{ new.date_creation }} /
+        автор: {{ new.author }}
+      </li>
+    {% empty %}
+      <h2>Новостей пока нет</h2>
+    {% endfor %}
+  </ul>
+  {% if perms.app_news.can_publish %}
+    <br>
+    <h3>Для публикации:</h3>
+    {% if unpublished_news %}
+      <form method="post">
+        {% csrf_token %}
+        <ul>
+          
+            {% for new in unpublished_news %}
+              <li>
+                <a href="{% url 'app_news:details' pk=new.pk %}">{{ new.title }}</a> /
+                опубликовано: {{ new.date_creation }} /
+                автор: {{ new.author }} /
+                <lable  for="{{ new.pk }}">Опубликовать:</lable>
+                <input type="checkbox" name="{{ new.pk }}" id="{{ new.pk }}">
+              </li>
+            {% empty %}
+              <h4>Новостей пока нет</h4>
+            {% endfor %}
+        </ul>
+        <button type="submit">Сохранить</button>
+      </form>
+    {% else %}
+      <h3>Список пуст</h3>
+    {% endif %}
+  {% endif %}
+    <br>
+  {% if perms.app_news.add_newsmodel %}
+    <a href="{% url 'app_news:create' %}">Добавить новость</a>
+  {% else %}
+      {% if user.is_authenticated %}
+        Чтобы добавлять новости, дождитесь, когда модератор верифицирует вашу учетную запись.
+      {% else %}
+        Зарегистрируйтесь, или войдите чтобы опубликовать новость
+      {% endif %}  
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'app_news/base.html' %}
+
+{% block title %}
+  {{ news.title }}
+{% endblock %}
+
+{% block body %}
+  <a href="{% url 'app_news:list' %}">Ксписку новостей</a>
+  <h1>{{ news.title }}:</h1>
+  <p>{{ news.content_news }}</p>
+
+  {% if user.username == news.author.username and perms.app_news.change_newsmodel or user.is_superuser  %}
+    <div><a href="{% url 'app_news:update' pk=news.pk %}">Редактировать</a></div>
+  {% endif %}
+  
+  {% if perms.app_news.delete_newsmodel %}
+    <div><a href="{% url 'app_news:archived' pk=news.pk %}">Переместить новость в архив</a></div>
+  {% endif %}
+
+  <div>
+    <h2>Комментарии:</h2>
+    {% for comment in comments %}
+      <div>
+        <b>{% firstof comment.user.first_name comment.user.username %}:</b>
+        {{ comment.content_comment }}
+      </div>
+    {% empty %}
+      <h2>Комментариев пока нет</h2>
+    {% endfor %}
+  </div>
+
+  {% if request.user.is_authenticated %}
+    <div>
+      <h3>Добавить комментарий:</h3>
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Опубликовать</button>
+      </form>
+    </div>
+  {% else %}
+    <p><b>Зарегистрируйтесь, чтобы оставлять комментарии.</b></p>
+  {% endif %}
+{% endblock %}

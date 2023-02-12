@@ -1,0 +1,22 @@
+{% extends 'app_news/base.html' %}
+
+{% block title %}
+  Архивирование новости
+{% endblock %}
+
+{% block body %}
+  <p>Вы действительно хотите новость "{{ news.title }}" отправить в архив?</p>
+  <br>
+  <div>
+    <a href="{% url 'app_news:details' pk=object.pk %}"
+      >Вернуться к новости "{{ news.title }}"</a>
+  </div>
+  <br>
+  <div>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Архивировать</button>
+    </form>
+  </div>
+{% endblock %}

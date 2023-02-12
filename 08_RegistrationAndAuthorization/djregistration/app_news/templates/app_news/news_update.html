@@ -1,0 +1,17 @@
+{% extends 'app_news/base.html' %}
+
+{% block title %}
+  Редактирование новости "{{ news.title }}"
+{% endblock %}
+
+{% block body %}
+  <h1>Редактирование новости {{ news.title}}</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type=submit>Редактировать</button>
+  </form>
+
+  <a href="{% url 'app_news:details' pk=news.pk %}">Отмена редактирования</a>
+
+{% endblock %}
