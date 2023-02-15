@@ -1,16 +1,45 @@
-from django.shortcuts import render
-from django.contrib.auth.views import LoginView
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
+from django.contrib.auth.views import LoginView, LogoutView
+from django.urls import reverse_lazy
+from django.contrib.auth.models import User
+from django.views.generic import (UpdateView,
+                                  CreateView)
+from .forms import RegistrationUserForm, UpdateUserForm
 
 
-class AuthUsersView(LoginView):
+class UsersLoginView(LoginView):
     template_name = 'app_users/login.html'
     next_page = ''
 
 
-def registration_view(request):
-    form = UserCreationForm()
+class UserLogoutView(LogoutView):
+    pass
+
+
+class UserCreateView(CreateView):
+    model = User
+    form_class = RegistrationUserForm
+    template_name = 'app_users/create.html'
+
+
+@login_required
+def user_account_view(request):
+    return render(request, 'app_users/account.html')
+
+
+@login_required
+def user_update_view(request):
+    user = User.objects.get(username=request.user.username)
+    if request.method == 'POST':
+
+        print(user)
+        form = UpdateUserForm(request.POST, instance=user)
+        if form.is_valid():
+            user.save()
+    else:
+        form = UpdateUserForm(instance=user)
     context = {
-            'form': form
+        'form': form
     }
-    return render(request, 'app_users/registration.html', context=context)
+    return render(request, 'app_users/update.html', context=context)
