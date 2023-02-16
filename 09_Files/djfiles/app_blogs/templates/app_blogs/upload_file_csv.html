@@ -1,0 +1,13 @@
+{% extends app_blogs/base.html %}
+
+{% block title %}
+    Загрузка блогов из файла CSV
+{% endblog %}
+
+{% block body %}
+    <form metod="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Загрузить</button>
+    </form>
+{% endblock %}
