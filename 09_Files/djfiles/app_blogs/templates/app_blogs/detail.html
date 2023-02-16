@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Blog {{blog.pk}}</title>
-</head>
-<body>
+{% extends 'app_blogs/base.html' %}
 
-</body>
-</html>
+{% block title %}
+    Blog {{blog.pk}}
+{% endblock %}
+
+{% block body %}
+    <br>
+    <a href="{% url 'app_blogs:list' %}">К блогам</a>
+    <br>
+    <h1>Блог {{blog.pk}}</h1>
+    <p>{{ blog.content }}</p>
+{% endblock %}

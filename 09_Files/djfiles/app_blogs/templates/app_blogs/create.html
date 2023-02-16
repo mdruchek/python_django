@@ -1,6 +1,10 @@
-{% extends app_blogs/base.html %}
+{% extends "app_blogs/base.html" %}
 
 {% block title %}
+    Создание нового блога
+{% endblock %}
+
+{% block body %}
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
@@ -8,5 +12,5 @@
         <button type="submit">Добавить</button>
     </form>
     <br>
-    <a href="{% url 'app_blogs:upload_csv' %}">Загрузить из файла csv</a>
+    <a href="{% url 'app_blogs:upload_file_csv' %}">Загрузить из файла csv</a>
 {% endblock %}

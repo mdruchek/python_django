@@ -10,19 +10,18 @@ from .forms import RegistrationUserForm, UpdateUserForm
 
 class UsersLoginView(LoginView):
     template_name = 'app_users/login.html'
-    next_page = reverse_lazy('/blogs/')
+    next_page = reverse_lazy('app_blogs:list')
 
 
 class UserLogoutView(LogoutView):
-    next_page = reverse_lazy('/blogs/')
+    next_page = reverse_lazy('app_blogs:list')
 
 
 class UserCreateView(CreateView):
     model = User
     form_class = RegistrationUserForm
     template_name = 'app_users/create.html'
-    next_page = reverse_lazy('/blogs/')
-
+    next_page = reverse_lazy('app_blogs:list')
 
 
 @login_required
