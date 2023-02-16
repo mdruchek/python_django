@@ -1,0 +1,8 @@
+{% extends app_blogs/base.html %}
+
+{% block title %}
+    <form method="POST">
+        {{ form.as_p }}
+        <button type="submit">Добавить</button>
+    </form>
+{% endblock %}

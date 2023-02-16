@@ -1,7 +1,5 @@
-from django.forms.models import ModelForm
-from .models import Blog
+from django import forms
 
 
-class BlogForm(ModelForm):
-    class Meta:
-        model = Blog
+class UploadFileForm(forms.Form)
+    file_csv = forms.FileField()

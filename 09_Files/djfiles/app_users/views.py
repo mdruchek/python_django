@@ -10,17 +10,19 @@ from .forms import RegistrationUserForm, UpdateUserForm
 
 class UsersLoginView(LoginView):
     template_name = 'app_users/login.html'
-    next_page = ''
+    next_page = reverse_lazy('/blogs/')
 
 
 class UserLogoutView(LogoutView):
-    pass
+    next_page = reverse_lazy('/blogs/')
 
 
 class UserCreateView(CreateView):
     model = User
     form_class = RegistrationUserForm
     template_name = 'app_users/create.html'
+    next_page = reverse_lazy('/blogs/')
+
 
 
 @login_required
@@ -32,8 +34,6 @@ def user_account_view(request):
 def user_update_view(request):
     user = User.objects.get(username=request.user.username)
     if request.method == 'POST':
-
-        print(user)
         form = UpdateUserForm(request.POST, instance=user)
         if form.is_valid():
             user.save()

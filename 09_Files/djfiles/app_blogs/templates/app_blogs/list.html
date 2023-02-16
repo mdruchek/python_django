@@ -1,0 +1,16 @@
+{% extends app_blogs/base.html %}
+
+{% block title %}
+    Бллоги
+{% endblock%}
+
+{% block body %}
+    <h1>Блоги:</h1>
+    {% if blogs %}
+        {% for blog in blogs %}
+            <p>{{ blog.created }} / {% blog.content|truncatechars: 100 %} <a href="{% url 'app_blogs:detail' pk=blog.pk %}">Подробнее</a></p>
+        {% endfor %}
+    {% else %}
+        <h2>Блогов нет</h2>
+    {% endif %}
+{% endblock %}

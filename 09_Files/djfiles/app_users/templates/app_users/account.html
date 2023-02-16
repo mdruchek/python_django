@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Данные пользователя</title>
-</head>
-<body>
+{% extends app_blogs/base.html %}
+
+{% block title %}
+  Данные пользователя
+{% endblock%}
+
+{% block body %}
   <h1>Профиль пользователя {{ request.user.username }}:</h1>
   <p>Username: {{ request.user.username }}</p>
   <p>Имя: {{ request.user.first_name }}</p>
@@ -12,5 +12,4 @@
   <p>Электронная почта: {{ request.user.email }}</p>
   <br>
   <a href="{% url 'app_users:update' %}">Редактировать профиль</a>
-</body>
-</html>
+{% endblock %}
