@@ -18,7 +18,7 @@ class BlogDetailView(DetailView):
     context_object_name = 'blog'
 
 
-class CreateBlogView(LoginRequiredMixin, CreateView, FormMixin):
+class CreateBlogView(LoginRequiredMixin, CreateView):
     model = Blog
     fields = 'content', 'image
 
