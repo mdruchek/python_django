@@ -21,15 +21,18 @@ class UserCreateView(CreateView):
     model = User
     form_class = RegistrationUserForm
     template_name = 'app_users/create.html'
-    next_page = reverse_lazy('app_blogs:list')
+    success_url = reverse_lazy('app_blogs:list')
+
+    def post(self, request, *args, **kwargs):
+        form =
 
 
-@login_required
+@login_required(login_url=reverse_lazy('app_users:login'))
 def user_account_view(request):
     return render(request, 'app_users/account.html')
 
 
-@login_required
+@login_required(login_url=reverse_lazy('app_users:login'))
 def user_update_view(request):
     user = User.objects.get(username=request.user.username)
     if request.method == 'POST':
