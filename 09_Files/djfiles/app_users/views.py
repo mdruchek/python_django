@@ -27,28 +27,18 @@ class UserCreateView(CreateView):
     template_name = 'app_users/create.html'
     success_url = reverse_lazy('app_blogs:list')
 
-
     def post(self, request, *args, **kwargs):
-        form = self.get_form()
+        form = RegistrationUserForm(request.POST, request.FILES)
         if form.is_valid():
-            user = form.save()
-            form.instace.avatar =ProfileUser(user=self.user, avatar=avatar)
-            return self.form_valid(form)
-        else:
-            return self.form_invalid(form)
-
-    def form_valid(self, form):
-        if form.is_valid():
-
-        response = super().form_valid(form)
-        avatar = self.request.FILES.get('avatar')
-        if avatar:
-            form.instace.avatar = ProfileUser.objects.create(user=self.request.user, avatar=avatar)
-        username = form.cleaned_data.get('username')
-        password = form.cleaned_date.get('password1')
-        user = authenticate(self.request, username=username, password=password)
-        login(self.request, user)
-        return response
+            form.save()
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            user = authenticate(request, username=username, password=password)
+            login(request, user)
+            avatar = form.cleaned_data.get('avatar')
+            if avatar:
+                ProfileUser.objects.create(user=user, avatar=avatar)
+            return HttpResponseRedirect(reverse('app_blogs:list'))
 
 
 @login_required(login_url=reverse_lazy('app_users:login'))

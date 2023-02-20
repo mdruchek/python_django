@@ -11,4 +11,4 @@ urlpatterns = [
     path('create/', BlogCreateView.as_view(), name="create"),
     path('upload_file_csv/', upload_blog_csv, name="upload_file_csv"),
     path('<int:pk>', BlogDetailView.as_view(), name='detail'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
