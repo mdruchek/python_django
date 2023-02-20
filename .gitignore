@@ -133,6 +133,5 @@ dmypy.json
 # Jetbrains Intellij IDEA
 .idea/
 dj_prg/
-.vscode
-*migrations/
+.vscode/
 *media/
