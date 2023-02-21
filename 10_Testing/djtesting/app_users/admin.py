@@ -1,3 +1,8 @@
 from django.contrib import admin
+from .models import ProfileUser
 
-# Register your models here.
+class ProfileUserAdmin(admin.ModelAdmin):
+    list_display = ('id', 'avatar',)
+
+
+admin.site.register(ProfileUser, ProfileUserAdmin)
