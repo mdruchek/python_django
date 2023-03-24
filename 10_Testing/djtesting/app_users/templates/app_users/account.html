@@ -6,7 +6,7 @@
 
 {% block body %}
   <h1>Профиль пользователя {{ request.user.username }}:</h1>
-  {% if request.user.profileuser %}
+  {% if request.user.profileuser.avatar %}
     <img src="{{ request.user.profileuser.avatar.url }}" alt="аватар {{ request.user.username }}">
   {% endif %}
   <p>Username: {{ request.user.username }}</p>

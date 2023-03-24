@@ -25,7 +25,7 @@ class UserCreateView(CreateView):
     model = User
     form_class = RegistrationUserForm
     template_name = 'app_users/create.html'
-    success_url = reverse_lazy('app_blogs:list')
+    # success_url = reverse_lazy('app_blogs:list')
 
     def post(self, request, *args, **kwargs):
         form = RegistrationUserForm(request.POST, request.FILES)
@@ -49,10 +49,17 @@ def user_account_view(request):
 @login_required(login_url=reverse_lazy('app_users:login'))
 def user_update_view(request):
     user = User.objects.get(username=request.user.username)
+    profile_user = ProfileUser.objects.get(user=user)
     if request.method == 'POST':
-        form = UpdateUserForm(request.POST, instance=user)
+        form = UpdateUserForm(request.POST, request.FILES, instance=user)
         if form.is_valid():
             user.save()
+            if form.cleaned_data['avatar']:
+                profile_user.avatar = form.cleaned_data['avatar']
+            else:
+                profile_user.avatar = ''
+            profile_user.save()
+            return redirect(reverse('app_users:account'))
     else:
         form = UpdateUserForm(instance=user)
     context = {

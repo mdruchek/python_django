@@ -1,0 +1,18 @@
+[
+  {
+    "model": "app_users.profileuser",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "avatar": "avatars/zhivotnye_kot_7201.jpg"
+    }
+  },
+  {
+    "model": "app_users.profileuser",
+    "pk": 2,
+    "fields": {
+      "user": 2,
+      "avatar": ""
+    }
+  }
+]

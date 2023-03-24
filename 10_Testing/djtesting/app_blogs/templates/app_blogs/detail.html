@@ -11,6 +11,6 @@
     <h1>Блог {{blog.pk}}</h1>
     <p>{{ blog.content }}</p>
     {% for image in images %}
-        <img src="{{ image.image }}">
+        <img src="{{ image.image.url }}">
     {% endfor %}
 {% endblock %}

@@ -1,0 +1,37 @@
+[
+  {
+    "model": "app_blogs.blog",
+    "pk": 1,
+    "fields": {
+      "author": 2,
+      "content": "папа",
+      "created": "2023-02-25T06:06:14.720Z"
+    }
+  },
+  {
+    "model": "app_blogs.blog",
+    "pk": 2,
+    "fields": {
+      "author": 2,
+      "content": "Привет",
+      "created": "2023-03-21T16:52:40.685Z"
+    }
+  },
+  {
+    "model": "app_blogs.blog",
+    "pk": 3,
+    "fields": {
+      "author": 2,
+      "content": "Halo",
+      "created": "2023-03-21T16:52:40.689Z"
+    }
+  },
+  {
+    "model": "app_blogs.blogimage",
+    "pk": 1,
+    "fields": {
+      "image": "files/Screenshot_20221224_142141.png",
+      "blog": 1
+    }
+  }
+]

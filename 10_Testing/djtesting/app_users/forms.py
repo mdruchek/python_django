@@ -4,7 +4,7 @@ from django import forms
 
 
 class RegistrationUserForm(UserCreationForm):
-    avatar = forms.ImageField()
+    avatar = forms.ImageField(required=False)
 
     class Meta:
         model = User
@@ -12,7 +12,7 @@ class RegistrationUserForm(UserCreationForm):
 
 
 class UpdateUserForm(UserChangeForm):
-    avatar = forms.ImageField()
+    avatar = forms.ImageField(required=False)
 
     class Meta:
         model = User

@@ -1,0 +1,56 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$CDKgkDXbOiWsb0736L43Nv$cN2cOJ9YgUKPx7faNYk9fDetkumFwDEs3Zv7pBAnn18=",
+      "last_login": "2023-02-25T04:11:33.852Z",
+      "is_superuser": false,
+      "username": "nez",
+      "first_name": "Незнайка",
+      "last_name": "Не",
+      "email": "nez@mail.ru",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-02-25T04:11:33.135Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$P8C2Yfv6HIgkzk8LC4qhJI$0ItD2W64GdBUgjkImGXyn8awPBfW+w+xveoaPNQd6+8=",
+      "last_login": "2023-03-21T16:52:27.999Z",
+      "is_superuser": false,
+      "username": "knop",
+      "first_name": "КнопочкаДруг",
+      "last_name": "Кнопочкина",
+      "email": "al@mail.ru",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-02-25T04:36:58.095Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$nsXhpTrhfvw76q2gVGo5y2$veV4+JnRbX6t6xXAMgup+FVTEbL34c6Plq/DxwFTxGM=",
+      "last_login": "2023-03-23T16:11:21.082Z",
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2023-03-23T16:11:10.654Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  }
+]

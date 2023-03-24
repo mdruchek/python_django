@@ -1,10 +1,12 @@
 from _csv import reader
-from django.http import HttpResponseRedirect
+from django.http import HttpRequest, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse, reverse_lazy
+from django.views import View
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, DeleteView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.decorators import login_required
 from .models import Blog, BlogImage
 from .forms import UploadFileForm, BlogCreateForm
 
@@ -36,12 +38,10 @@ class BlogCreateView(LoginRequiredMixin, CreateView):
 
     def post(self, request, *args, **kwargs):
         form = BlogCreateForm(request.POST, request.FILES)
-
-        blog = Blog.objects.create(content=self.request.POST['content'],
-                                   author=self.request.user)
-        form.instance.blog = blog
-
         if form.is_valid():
+            blog = Blog.objects.create(content=self.request.POST['content'],
+                                       author=self.request.user)
+            form.instance.blog = blog
             images = request.FILES.getlist('image')
             for img in images:
                 instance = BlogImage(image=img, blog=blog)
@@ -49,6 +49,7 @@ class BlogCreateView(LoginRequiredMixin, CreateView):
             return HttpResponseRedirect(reverse('app_blogs:list'))
 
 
+@login_required(login_url=reverse_lazy('app_users:login'))
 def upload_blog_csv(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
@@ -70,3 +71,20 @@ def upload_blog_csv(request):
 
 class BlogDeleteView(DeleteView):
     model = Blog
+
+
+class BlogsDataExportView(UserPassesTestMixin, View):
+    def test_func(self):
+        return self.request.user.is_staff
+
+    def get(self, request: HttpRequest) -> JsonResponse:
+        blogs = Blog.objects.order_by('pk').all()
+        blog_data = [
+            {
+                'pk': blog.pk,
+                'author': blog.author.username,
+                'content': blog.content,
+            }
+            for blog in blogs
+        ]
+        return JsonResponse({'blogs': blog_data})
