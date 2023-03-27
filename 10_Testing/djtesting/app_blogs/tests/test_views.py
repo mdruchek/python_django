@@ -38,13 +38,14 @@ class BlogDetailViewTestCase(TestCase):
 
 class BlogsExportViewTestCase(TestCase):
     fixtures = [
-        'auth-fixtures.json',
-        'users-fixtures.json',
-        'blogs-fixtures.json',
+        'auth-fixture.json',
+        'users-fixture.json',
+        'blogs-fixture.json',
     ]
 
     @classmethod
     def setUpClass(cls):
+        super().setUpClass()
         cls.user = User.objects.create_user(
             username='test_user',
             password='n12345678',
@@ -71,7 +72,4 @@ class BlogsExportViewTestCase(TestCase):
             for blog in blogs
         ]
         blog_data = response.json()
-        print(blogs)
-        print(expected_data)
-        print(blog_data['blogs'])
         self.assertEqual(blog_data['blogs'], expected_data)
