@@ -1,14 +1,15 @@
 {% extends 'app_blogs/base.html' %}
+{% load i18n %}
 
 {% block title %}
-    Blog {{blog.pk}}
+    {% trans "Блог" %} {{blog.pk}}
 {% endblock %}
 
 {% block body %}
     <br>
-    <a href="{% url 'app_blogs:list' %}">К блогам</a>
+    <a href="{% url 'app_blogs:list' %}">{% trans "К блогам" %}</a>
     <br>
-    <h1>Блог {{blog.pk}}</h1>
+    <h1>{% trans "Блог" %} {{blog.pk}}</h1>
     <p>{{ blog.content }}</p>
     {% for image in images %}
         <img src="{{ image.image.url }}">

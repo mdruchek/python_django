@@ -1,18 +1,19 @@
 {% extends "app_blogs/base.html" %}
+{% load i18n %}
 
 {% block title %}
-  Данные пользователя
+  {% trans "Данные пользователя" %}
 {% endblock%}
 
 {% block body %}
-  <h1>Профиль пользователя {{ request.user.username }}:</h1>
+  <h1>{% trans "Профиль пользователя" %} {{ request.user.username }}:</h1>
   {% if request.user.profileuser.avatar %}
-    <img src="{{ request.user.profileuser.avatar.url }}" alt="аватар {{ request.user.username }}">
+    <img src="{{ request.user.profileuser.avatar.url }}" alt="{% trans "аватар" %} {{ request.user.username }}">
   {% endif %}
   <p>Username: {{ request.user.username }}</p>
-  <p>Имя: {{ request.user.first_name }}</p>
-  <p>Фамилия: {{ request.user.last_name }}</p>
-  <p>Электронная почта: {{ request.user.email }}</p>
+  <p>{% trans "Имя" %}: {{ request.user.first_name }}</p>
+  <p>{% trans "Фамилия" %}: {{ request.user.last_name }}</p>
+  <p>{% trans "Электронная почта" %}: {{ request.user.email }}</p>
   <br>
-  <a href="{% url 'app_users:update' %}">Редактировать профиль</a>
+  <a href="{% url 'app_users:update' %}">{% trans "Редактировать профиль" %}</a>
 {% endblock %}

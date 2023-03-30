@@ -1,14 +1,15 @@
 {% extends "app_blogs/base.html" %}
+{% load i18n %}
 
 {% block title %}
-    Создание нового блога
+    {% trans "Создание нового блога" %}
 {% endblock %}
 
 {% block body %}
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Добавить</button>
+        <button type="submit">{% trans "Добавить" %}</button>
     </form>
     <br>
 {% endblock %}

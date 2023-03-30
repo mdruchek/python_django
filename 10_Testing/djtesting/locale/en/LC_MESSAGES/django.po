@@ -1,0 +1,198 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-30 17:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: app_blogs/apps.py:8 app_blogs/templates/app_blogs/list.html:5
+#: app_blogs/templates/app_blogs/list.html:9
+msgid "Блоги"
+msgstr "Blogs"
+
+#: app_blogs/models.py:8
+msgid "автор"
+msgstr "author"
+
+#: app_blogs/models.py:9
+msgid "содержание"
+msgstr "content"
+
+#: app_blogs/models.py:10
+msgid "дата создания"
+msgstr "created"
+
+#: app_blogs/models.py:13
+msgid "блоги"
+msgstr "Blogs"
+
+#: app_blogs/models.py:14 app_blogs/models.py:19
+msgid "блог"
+msgstr "blog"
+
+#: app_blogs/models.py:18
+msgid "изображение"
+msgstr "image"
+
+#: app_blogs/models.py:22
+msgid "изображения для блогов"
+msgstr "images"
+
+#: app_blogs/models.py:23
+msgid "изображение для блога"
+msgstr "image"
+
+#: app_blogs/templates/app_blogs/base.html:27
+msgid "Войти"
+msgstr "Login"
+
+#: app_blogs/templates/app_blogs/base.html:28
+msgid "Зарегистрироваться"
+msgstr "Register"
+
+#: app_blogs/templates/app_blogs/base.html:30
+msgid "Добро пожаловать"
+msgstr "Welcome"
+
+#: app_blogs/templates/app_blogs/base.html:31
+msgid "Выйти"
+msgstr "Logout"
+
+#: app_blogs/templates/app_blogs/base.html:32
+msgid "Профиль"
+msgstr "Profile"
+
+#: app_blogs/templates/app_blogs/create.html:5
+msgid "Создание нового блога"
+msgstr "Creating a new blog"
+
+#: app_blogs/templates/app_blogs/create.html:12
+msgid "Добавить"
+msgstr "Add"
+
+#: app_blogs/templates/app_blogs/detail.html:5
+#: app_blogs/templates/app_blogs/detail.html:12
+msgid "Блог"
+msgstr "Blog"
+
+#: app_blogs/templates/app_blogs/detail.html:10
+msgid "К блогам"
+msgstr "To blogs"
+
+#: app_blogs/templates/app_blogs/list.html:12
+msgid "Автор"
+msgstr "Author"
+
+#: app_blogs/templates/app_blogs/list.html:12
+msgid "Подробнее"
+msgstr "More detailed"
+
+#: app_blogs/templates/app_blogs/list.html:15
+msgid "Блогов нет"
+msgstr "There are no blogs"
+
+#: app_blogs/templates/app_blogs/list.html:18
+msgid "Создать"
+msgstr "To create"
+
+#: app_blogs/templates/app_blogs/list.html:20
+msgid "Загрузить из файла csv"
+msgstr "Upload from a csv file"
+
+#: app_blogs/templates/app_blogs/upload_file_csv.html:5
+msgid "Загрузка блогов из файла CSV"
+msgstr "Loading blocks from a CSV file"
+
+#: app_blogs/templates/app_blogs/upload_file_csv.html:12
+msgid "Загрузить"
+msgstr "Download"
+
+#: app_users/apps.py:8
+msgid "Пользователи"
+msgstr "Users"
+
+#: app_users/models.py:8
+msgid "пользователь"
+msgstr "user"
+
+#: app_users/models.py:9
+msgid "аватарка"
+msgstr "avatar"
+
+#: app_users/models.py:12
+msgid "профиль пользователя"
+msgstr "User Profile"
+
+#: app_users/templates/app_users/account.html:5
+msgid "Данные пользователя"
+msgstr "User data"
+
+#: app_users/templates/app_users/account.html:9
+msgid "Профиль пользователя"
+msgstr "User Profile"
+
+#: app_users/templates/app_users/account.html:11
+msgid "аватар"
+msgstr "avatar"
+
+#: app_users/templates/app_users/account.html:14
+msgid "Имя"
+msgstr "Name"
+
+#: app_users/templates/app_users/account.html:15
+msgid "Фамилия"
+msgstr "Surname"
+
+#: app_users/templates/app_users/account.html:16
+msgid "Электронная почта"
+msgstr "Email"
+
+#: app_users/templates/app_users/account.html:18
+msgid "Редактировать профиль"
+msgstr "Edit Profile"
+
+#: app_users/templates/app_users/create.html:5
+msgid "Регистрация"
+msgstr "Register"
+
+#: app_users/templates/app_users/create.html:9
+msgid "Регистрация пользователя"
+msgstr "User Registration"
+
+#: app_users/templates/app_users/create.html:13
+#: app_users/templates/app_users/update.html:13
+msgid "Сохранить"
+msgstr "Save"
+
+#: app_users/templates/app_users/login.html:6
+msgid "Вход в систему"
+msgstr "Log in to the system"
+
+#: app_users/templates/app_users/login.html:9
+msgid "Выполните вход в систему"
+msgstr "Log in to the system"
+
+#: app_users/templates/app_users/login.html:13
+msgid "Вход"
+msgstr "Login"
+
+#: app_users/templates/app_users/update.html:5
+msgid "Редактирование профиля"
+msgstr "Editing a profile"
+
+#: app_users/templates/app_users/update.html:9
+msgid "Редактирование профиля пользователя"
+msgstr "Editing a user profile"

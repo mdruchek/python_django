@@ -1,13 +1,14 @@
 {% extends "app_blogs/base.html" %}
+{% load i18n %}
 
 {% block title %}
-    Загрузка блогов из файла CSV
+    {% trans "Загрузка блогов из файла CSV" %}
 {% endblock %}
 
 {% block body %}
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Загрузить</button>
+        <button type="submit">{% trans "Загрузить" %}</button>
     </form>
 {% endblock %}
