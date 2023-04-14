@@ -1,0 +1,22 @@
+{% extends 'shop_app/base.html' %}
+{% load i18n %}
+
+{% block title %}
+  {% trans "Список продуктов" %}
+{% endblock title %}
+
+{% block main %}
+  <h1>{% trans "Список продуктов" %}:</h1>
+  <br>
+  <a href="{% url 'shop:product_create' %}">{% trans "Добавить продукт" %}</a>
+  <br>
+  {% if products %}
+    <ol>
+      {% for product in products %}
+        <li>{{ product.name }} / {{ product.description }} / {{ product.price }}</li>
+      {% endfor %}
+    </ol>
+  {% else %}
+    <h2>{% trans "Список пуст" %}</h2>
+  {% endif %}
+{% endblock main %}

@@ -1,0 +1,15 @@
+{% extends 'shop_app/base.html' %}
+{% load i18n %}
+
+{% block title %}
+  {% trans "Создание продукта" %}
+{% endblock title %}
+
+{% block main %}
+  <h1>{% trans "Добавить продукт" %}:</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Добавить</button>
+  </form>
+{% endblock main %}

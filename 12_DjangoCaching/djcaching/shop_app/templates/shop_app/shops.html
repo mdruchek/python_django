@@ -1,0 +1,27 @@
+{% extends 'shop_app/base.html' %}
+{% load cache %}
+{% load i18n %}
+
+{% block title %}
+  {% trans "Список магазинов" %}
+{% endblock title %}
+
+{% block main %}
+  <h1>{% trans "Список магазинов" %}:</h1>
+  {% if user.is_staff %}
+    <br>
+    <a href="{% url 'shop:shop_create' %}">{% trans "Добавить магазин" %}</a>
+    <br>
+  {% endif %}
+  {% if shops %}
+    <ol>
+      {% cache 500 shops %}
+        {% for shop in shops %}
+          <li>{{ shop.name }} / {{ shop.address }}</li>
+        {% endfor %}
+      {% endcache %}
+    </ol>
+  {% else %}
+    <h2>{% trans "Список пуст" %}</h2>
+  {% endif %}
+{% endblock main %}

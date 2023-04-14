@@ -9,10 +9,17 @@
 </head>
 <body>
   <header>
-    <a href="{% url 'shop:account' %}">{% trans "Личный кабинет" %}</a>
-    <a href="#">{% trans "Выйти" %}</a>
-    <a href="#">{% trans "Регистрация" %}</a>
-
+    {% if user.is_authenticated %}
+      <a href="{% url 'shop:account' %}">{% trans "Личный кабинет" %}</a>
+      {% if user.is_staff %}
+        <a href="{% url 'shop:products' %}">{% trans "Кабинет администратора" %}</a>
+      {% endif %}
+      <a href="{% url 'shop:logout' %}">{% trans "Выйти" %}</a>
+      <p>{% trans "Добро пожаловать" %} {% firstof user.first_name user.username %}!</p>
+    {% else %}
+      <a href="{% url 'shop:user_create' %}">{% trans "Регистрация" %}</a>
+      <a href="{% url 'shop:login' %}">{% trans "Войти" %}</a>
+    {% endif %}
     <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
       <input name="next" type="hidden" value="{{ redirect_to }}">
       <select name="language">    
@@ -27,6 +34,7 @@
       </select>
       <input type="submit" value="Go">
     </form>
+    <p><a href="{% url 'shop:main' %}">{% trans "На главную" %}</a></p>
   </header>
   {% block main %}{% endblock main %}
 </body>

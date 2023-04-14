@@ -1,0 +1,230 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-04-11 14:46+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: shop_app/models.py:7 shop_app/models.py:29
+msgid "Пользователь"
+msgstr "User"
+
+#: shop_app/models.py:8 shop_app/templates/shop_app/account.html:15
+msgid "Баланс"
+msgstr "Balance"
+
+#: shop_app/models.py:11
+msgid "Профиль пользователя"
+msgstr "User Profile"
+
+#: shop_app/models.py:12
+msgid "Профили пользователей"
+msgstr "User profiles"
+
+#: shop_app/models.py:16
+msgid "Название товара"
+msgstr "Product name"
+
+#: shop_app/models.py:17
+msgid "Описание товара"
+msgstr "Product Description"
+
+#: shop_app/models.py:18
+msgid "Стоимость"
+msgstr "Cost"
+
+#: shop_app/models.py:24
+msgid "Товар"
+msgstr "Product"
+
+#: shop_app/models.py:25
+msgid "Товары"
+msgstr "Products"
+
+#: shop_app/models.py:33 shop_app/templates/shop_app/account.html:57
+msgid "Заказ"
+msgstr "Order"
+
+#: shop_app/models.py:34
+msgid "Заказы"
+msgstr "Orders"
+
+#: shop_app/models.py:38 shop_app/models.py:61
+#: shop_app/templates/shop_app/account.html:24
+msgid "Название"
+msgstr "Title"
+
+#: shop_app/models.py:39 shop_app/templates/shop_app/account.html:25
+msgid "Описание"
+msgstr "Description"
+
+#: shop_app/models.py:40 shop_app/templates/shop_app/account.html:26
+msgid "Промокод"
+msgstr "Promo code"
+
+#: shop_app/models.py:41 shop_app/models.py:44 shop_app/models.py:50
+#: shop_app/templates/shop_app/account.html:27
+msgid "Скидка"
+msgstr "Discount"
+
+#: shop_app/models.py:45 shop_app/templates/shop_app/account.html:19
+msgid "Скидки"
+msgstr "Discounts"
+
+#: shop_app/models.py:49
+msgid "Продукт"
+msgstr "Product"
+
+#: shop_app/models.py:56
+msgid "Предложение"
+msgstr "Offer"
+
+#: shop_app/models.py:57 shop_app/templates/shop_app/account.html:45
+msgid "Предложения"
+msgstr "Offers"
+
+#: shop_app/models.py:62
+msgid "Адрес"
+msgstr "Address"
+
+#: shop_app/models.py:65 shop_app/templates/shop_app/index.html:5
+msgid "Магазин"
+msgstr "Shop"
+
+#: shop_app/models.py:66
+msgid "Магазины"
+msgstr "Shops"
+
+#: shop_app/templates/shop_app/account.html:6
+#: shop_app/templates/shop_app/account.html:10
+#: shop_app/templates/shop_app/base.html:12
+msgid "Личный кабинет"
+msgstr "Personal account"
+
+#: shop_app/templates/shop_app/account.html:11
+msgid "Имя пользователя"
+msgstr "Username"
+
+#: shop_app/templates/shop_app/account.html:12
+msgid "Имя"
+msgstr "Firstname"
+
+#: shop_app/templates/shop_app/account.html:13
+msgid "Фамилия"
+msgstr "Lastname"
+
+#: shop_app/templates/shop_app/account.html:14
+msgid "Электронная почта"
+msgstr "Email"
+
+#: shop_app/templates/shop_app/account.html:47
+msgid "скидка"
+msgstr "discount"
+
+#: shop_app/templates/shop_app/account.html:49
+msgid "Предложений нет"
+msgstr "There are no offers"
+
+#: shop_app/templates/shop_app/account.html:54
+msgid "История покупок"
+msgstr "Purchase history"
+
+#: shop_app/templates/shop_app/account.html:59
+msgid "Список заказов пуст"
+msgstr "The list of orders is empty"
+
+#: shop_app/templates/shop_app/base.html:15
+msgid "Кабинет администратора"
+msgstr "Administrator's account"
+
+#: shop_app/templates/shop_app/base.html:17
+msgid "Выйти"
+msgstr "Logout"
+
+#: shop_app/templates/shop_app/base.html:18
+msgid "Добро пожаловать"
+msgstr "Welcome"
+
+#: shop_app/templates/shop_app/base.html:20
+msgid "Регистрация"
+msgstr "Registration"
+
+#: shop_app/templates/shop_app/base.html:36
+#: shop_app/templates/shop_app/login.html:14
+msgid "На главную"
+msgstr "To the main page"
+
+#: shop_app/templates/shop_app/index.html:9
+msgid "Добро пожаловать в наш магазин"
+msgstr "Welcome to our shop"
+
+#: shop_app/templates/shop_app/index.html:10
+msgid "Адреса наших магазинов"
+msgstr "Addresses of our stores"
+
+#: shop_app/templates/shop_app/login.html:10
+#: shop_app/templates/shop_app/login.html:15
+msgid "Вход в личный кабинет"
+msgstr "Login to your personal account"
+
+#: shop_app/templates/shop_app/login.html:19
+msgid "Войти"
+msgstr "Login"
+
+#: shop_app/templates/shop_app/product_create.html:5
+msgid "Создание продукта"
+msgstr "Creating a product"
+
+#: shop_app/templates/shop_app/product_create.html:9
+#: shop_app/templates/shop_app/products.html:11
+msgid "Добавить продукт"
+msgstr "Add a product"
+
+#: shop_app/templates/shop_app/products.html:5
+#: shop_app/templates/shop_app/products.html:9
+msgid "Список продуктов"
+msgstr "List of products"
+
+#: shop_app/templates/shop_app/products.html:20
+#: shop_app/templates/shop_app/shops.html:20
+msgid "Список пуст"
+msgstr "The list is empty"
+
+#: shop_app/templates/shop_app/shop_create.html:5
+msgid "Создание магазина"
+msgstr "Creating a shop"
+
+#: shop_app/templates/shop_app/shop_create.html:9
+msgid "Добавить магазин"
+msgstr "Add a shop"
+
+#: shop_app/templates/shop_app/shop_create.html:13
+msgid "Добавить"
+msgstr "Add"
+
+#: shop_app/templates/shop_app/shops.html:6
+#: shop_app/templates/shop_app/shops.html:10
+msgid "Список магазинов"
+msgstr "List of shops"
+
+#: shop_app/templates/shop_app/user_create.html:5
+#: shop_app/templates/shop_app/user_create.html:9
+msgid "Создание профиля"
+msgstr "Creating a profile"
+
+#: shop_app/templates/shop_app/user_create.html:13
+msgid "Сохранить"
+msgstr "Save"

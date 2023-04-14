@@ -1,4 +1,5 @@
 {% extends 'shop_app/base.html' %}
+{% load cache %}
 {% load i18n %}
 
 {% block title %}
@@ -7,4 +8,55 @@
 
 {% block main %}
   <h1>{% trans "Личный кабинет" %}</h1>
+  <p>{% trans "Имя пользователя" %}: {{ user.username }}</p>
+  <p>{% trans "Имя" %}: {{ user.first_name }}</p>
+  <p>{% trans "Фамилия" %}: {{ user.last_name }}</p>
+  <p>{% trans "Электронная почта" %}: {{ user.email }}</p>
+  <p>{% trans "Баланс" %}: {{ user.userprofile.balance }}</p>
+  
+  <br>
+  
+  <h2>{% trans "Скидки" %}:</h2>
+  {% if stocks %}
+    <table border="1">
+      <thead>
+        <tr>
+          <th>{% trans "Название" %}</td>
+          <th>{% trans "Описание" %}</td>
+          <th>{% trans "Промокод" %}</td>
+          <th>{% trans "Скидка" %}</td>
+        </tr>
+      </thead>
+      {% for stock in stocks %}
+        <tr>
+          <td>{{ stock.name }}</td>
+          <td>{{ stock.description }}</td>
+          <td>{{ stock.promo_code }}</td>
+          <td>{{ stock.discount }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    <p>Скидок нет</p>
+  {% endif %}
+  
+  <br>
+  
+  <h2>{% trans "Предложения" %}:</h2>
+  {% for offer in offers %}
+    <p>{{ offer.product.name }}: {% trans "скидка" %} {{ offer.discount }}%</p>
+  {% empty %}
+    <p>{% trans "Предложений нет" %}</p>
+  {% endfor %}
+
+  <br>
+  
+  <h2>{% trans "История покупок" %}:</h2>
+  {% cache 500 orders %}
+    {% for order in user.order_set.all %}
+      <p>{% trans "Заказ" %}: {{ order.id }}</p>
+    {% empty %}
+      {% trans "Список заказов пуст" %}
+    {% endfor %}
+  {% endcache %}
 {% endblock main %}
