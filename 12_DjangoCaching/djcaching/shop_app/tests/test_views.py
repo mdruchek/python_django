@@ -28,16 +28,6 @@ class PersonalAccountViewTestCase(TestCase):
         self.assertTemplateUsed(response, 'shop_app/account.html')
         self.assertContains(response, 'test_stock')
         self.assertContains(response, 'test_product')
-        self.stocks.delete()
-        self.offers.delete()
-        self.order.delete()
-
-        response = self.client.get(reverse('shop:account'))
-        self.assertNotContains(response, 'test_stock')
-        self.assertNotContains(response, 'test_product')
-        self.assertContains(response, _('Скидок нет'))
-        self.assertContains(response, _('Предложений нет'))
-        self.assertContains(response, _('Список заказов пуст'))
 
         self.client.logout()
         response = self.client.get(reverse('shop:account'))
@@ -86,46 +76,6 @@ class UserCreateTestCase(TestCase):
         self.assertRedirects(response, reverse('shop:main'))
 
 
-class ShopsViewsTestCase(TestCase):
-    @classmethod
-    def setUpClass(cls):
-        cls.user = User.objects.create_user(username='test_user', password='123456789')
-        cls.user_staff = User.objects.create_user(username='test_user_staff', password='staff_123456789', is_staff=True)
-
-    @classmethod
-    def tearDownClass(cls):
-        cls.user.delete()
-        cls.user_staff.delete()
-
-    def setUp(self) -> None:
-        self.shop = Shop.objects.create(name='test_shop', address='test_address')
-
-    def tearDown(self) -> None:
-        self.shop.delete()
-
-    def test_shops_views(self):
-        self.client.force_login(self.user_staff)
-        response = self.client.get(reverse('shop:shops'))
-        self.assertContains(response, 'Список магазинов:')
-        self.assertContains(response, 'test_shop / test_address')
-        self.assertContains(response, 'Добавить магазин')
-        self.assertContains(response, 'href="{}"'.format(reverse('shop:shop_create')))
-
-        self.client.logout()
-        response = self.client.get(reverse('shop:shops'))
-        self.assertContains(response, 'Список магазинов:')
-        self.assertContains(response, 'test_shop / test_address')
-        self.assertNotContains(response, 'Добавить магазин')
-        self.assertNotContains(response, 'href="{}"'.format(reverse('shop:shop_create')))
-
-        self.client.force_login(self.user)
-        response = self.client.get(reverse('shop:shops'))
-        self.assertContains(response, 'Список магазинов:')
-        self.assertContains(response, 'test_shop / test_address')
-        self.assertNotContains(response, 'Добавить магазин')
-        self.assertNotContains(response, 'href="{}"'.format(reverse('shop:shop_create')))
-
-
 class ShopCreateViewTestCase(TestCase):
     @classmethod
     def setUpClass(cls):
@@ -139,12 +89,16 @@ class ShopCreateViewTestCase(TestCase):
         cls.user.delete()
         cls.user_staff.delete()
 
-    def test_shop_create_view(self):
+    def test_shop_create_view_user_not_staff(self):
         self.client.force_login(self.user)
         response = self.client.get(reverse('shop:shop_create'))
         self.assertEqual(response.status_code, 403)
         self.client.logout()
 
+        response = self.client.get(reverse('shop:shop_create'))
+        self.assertRedirects(response, '{}?next=/shops/shop-create/'.format(reverse('shop:login')))
+
+    def test_shop_create_view_user_staff(self):
         self.client.force_login(self.user_staff)
         response = self.client.get(reverse('shop:shop_create'))
         self.assertTemplateUsed(response, 'shop_app/shop_create.html')
@@ -158,10 +112,27 @@ class ShopCreateViewTestCase(TestCase):
 
         response = self.client.post(reverse('shop:shop_create'), {'name': 'shop_test_name',
                                                                   'address': 'shop_test_address'})
-        # self.assertRedirects(response, reverse('shop:shops'))
+        self.assertRedirects(response, reverse('shop:shops'))
 
-        # response = self.client.get(reverse('shop:shops'))
-        # self.assertContains(response, 'shop_test_name / shop_test_address')
+        response = self.client.get(reverse('shop:shops'))
+        self.assertContains(response, 'shop_test_name / shop_test_address')
+        self.assertContains(response, 'Список магазинов:')
+        self.assertContains(response, 'Добавить магазин')
+        self.assertContains(response, 'href="{}"'.format(reverse('shop:shop_create')))
+
+        self.client.logout()
+        response = self.client.get(reverse('shop:shops'))
+        self.assertContains(response, 'Список магазинов:')
+        self.assertContains(response, 'shop_test_name / shop_test_address')
+        self.assertNotContains(response, 'Добавить магазин')
+        self.assertNotContains(response, 'href="{}"'.format(reverse('shop:shop_create')))
+
+        self.client.force_login(self.user)
+        response = self.client.get(reverse('shop:shops'))
+        self.assertContains(response, 'Список магазинов:')
+        self.assertContains(response, 'shop_test_name / shop_test_address')
+        self.assertNotContains(response, 'Добавить магазин')
+        self.assertNotContains(response, 'href="{}"'.format(reverse('shop:shop_create')))
 
 
 class ProductsViewTestCase(TestCase):

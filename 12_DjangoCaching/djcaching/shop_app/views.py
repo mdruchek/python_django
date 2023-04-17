@@ -21,15 +21,14 @@ def personal_account_view(request):
     username = request.user.username
     stocks_cache_key = 'stocks:{}'.format(username)
     offers_cache_key = 'offers:{}'.format(username)
-    stocks = Stocks.objects.all()
-    offers = Offer.objects.all()
-    user_account_cache_data = {
-        stocks_cache_key: stocks,
-        offers_cache_key: offers
-    }
-
-    cache.set_many(user_account_cache_data)
-
+    stocks = cache.get(stocks_cache_key)
+    if not stocks:
+        stocks = Stocks.objects.all()
+        cache.set(stocks_cache_key, stocks, 10)
+    offers = cache.get(offers_cache_key)
+    if not offers:
+        offers = Offer.objects.all()
+        cache.set(offers_cache_key, offers, 10)
     context = {
         'stocks': stocks,
         'offers': offers
