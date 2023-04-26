@@ -26,19 +26,21 @@ class BookViewSet(viewsets.ModelViewSet):
         author_name = self.request.query_params.get('author_lastname')
         if author_name:
             self.queryset = self.queryset.filter(author__lastname=author_name)
+
         book_name = self.request.query_params.get('book_name')
         if book_name:
             self.queryset = self.queryset.filter(name__icontains=book_name)
-        book_pages = self.request.query_params.get('book_pages')
-        if book_pages:
-            sign = book_pages[:1]
-            pages = book_pages[1:]
-            print(sign)
-            print(pages)
-            if sign == '=':
-                self.queryset = self.queryset.filter(number_pages=int(pages))
-            elif sign == '>':
-                self.queryset = self.queryset.filter(number_pages__gt=int(pages))
-            elif sign == '<':
-                self.queryset = self.queryset.filter(number_pages__lt=int(pages))
+        print(self.request.query_params)
+
+        number_pages = self.request.query_params.get('number_pages')
+        if number_pages:
+            self.queryset = self.queryset.filter(number_pages=number_pages)
+
+        number_pages__lte = self.request.query_params.get('number_pages__lte')
+        if number_pages__lte:
+            self.queryset = self.queryset.filter(number_pages__lte=number_pages__lte)
+
+        number_pages__gte = self.request.query_params.get('number_pages__gte')
+        if number_pages__gte:
+            self.queryset = self.queryset.filter(number_pages__gte=number_pages__gte)
         return self.queryset
