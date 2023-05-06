@@ -1,0 +1,30 @@
+[
+  {
+    "model": "app_housing.room",
+    "pk": 1,
+    "fields": {
+      "type": "Зал"
+    }
+  },
+  {
+    "model": "app_housing.room",
+    "pk": 2,
+    "fields": {
+      "type": "Спальня"
+    }
+  },
+  {
+    "model": "app_housing.room",
+    "pk": 3,
+    "fields": {
+      "type": "Кухня"
+    }
+  },
+  {
+    "model": "app_housing.room",
+    "pk": 4,
+    "fields": {
+      "type": "Столовая"
+    }
+  }
+]

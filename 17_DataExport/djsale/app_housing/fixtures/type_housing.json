@@ -1,0 +1,23 @@
+[
+  {
+    "model": "app_housing.typehousing",
+    "pk": 1,
+    "fields": {
+      "type": "Дом"
+    }
+  },
+  {
+    "model": "app_housing.typehousing",
+    "pk": 2,
+    "fields": {
+      "type": "Квартира"
+    }
+  },
+  {
+    "model": "app_housing.typehousing",
+    "pk": 3,
+    "fields": {
+      "type": "Комната"
+    }
+  }
+]

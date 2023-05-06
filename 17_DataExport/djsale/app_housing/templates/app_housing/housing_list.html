@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Список жилья</title>
+</head>
+<body>
+  <h1>Список продаваемого жилья</h1>
+  {% if housings %}
+    <ul>
+      {% for housing in housings %}
+        <li>
+          Тип: {{ housing.type }} / 
+          Комнаты : {% for room in housing.rooms.all %} {{ room.type }} {% endfor %} / 
+          Адрес: {{ housing.address }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Список пока пуст</p>
+  {% endif %}
+</body>
+</html>

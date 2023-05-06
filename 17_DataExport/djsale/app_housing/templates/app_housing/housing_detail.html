@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Жильё {{ housing.pk }}</title>
+</head>
+<body>
+  <h1>{{ housing.type }}</h1>
+  <p>Продается {{ housing.type }} по адресу {{ housing.address }} со следующими комнатами: 
+    {% for room in housing.rooms.all %} {{ room.type }} {% endfor %}
+  </p>
+</body>
+</html>
